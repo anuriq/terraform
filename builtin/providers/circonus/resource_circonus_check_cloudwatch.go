@@ -43,18 +43,16 @@ var schemaCheckCloudWatch = &schema.Schema{
 	Elem: &schema.Resource{
 		Schema: convertToHelperSchema(checkCloudWatchDescriptions, map[schemaAttr]*schema.Schema{
 			checkCloudWatchAPIKeyAttr: &schema.Schema{
-				Type:         schema.TypeString,
-				Required:     true,
-				Sensitive:    true,
-				ValidateFunc: validateRegexp(checkCloudWatchAPIKeyAttr, `[\S]+`),
-				DefaultFunc:  schema.EnvDefaultFunc("AWS_ACCESS_KEY_ID", ""),
+				Type:        schema.TypeString,
+				Required:    true,
+				Sensitive:   true,
+				DefaultFunc: schema.EnvDefaultFunc("AWS_ACCESS_KEY_ID", nil),
 			},
 			checkCloudWatchAPISecretAttr: &schema.Schema{
-				Type:         schema.TypeString,
-				Required:     true,
-				Sensitive:    true,
-				ValidateFunc: validateRegexp(checkCloudWatchAPISecretAttr, `[\S]+`),
-				DefaultFunc:  schema.EnvDefaultFunc("AWS_SECRET_ACCESS_KEY", ""),
+				Type:        schema.TypeString,
+				Required:    true,
+				Sensitive:   true,
+				DefaultFunc: schema.EnvDefaultFunc("AWS_SECRET_ACCESS_KEY", nil),
 			},
 			checkCloudWatchDimmensionsAttr: &schema.Schema{
 				Type:         schema.TypeMap,
